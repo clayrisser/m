@@ -5,4 +5,5 @@ if [ -z "${M_ARGS_ENV_NAME}" ]; then
 fi
 target=$1
 shift
-exec make $target $M_ARGS_ENV_NAME="$@"
+args=$@
+make -s $target $M_ARGS_ENV_NAME="$args"

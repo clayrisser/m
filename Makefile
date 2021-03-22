@@ -5,6 +5,3 @@ install:
 .PHONY: uninstall
 uninstall:
 	@rm -f /usr/local/bin/m
-
-.PHONY: reinstall
-reinstall: uninstall install
