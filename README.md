@@ -28,5 +28,5 @@ m build --hello=world
 this will end up running the following make command
 
 ```sh
-make build ARGS="--hello=world"
+make -s build ARGS="--hello=world"
 ```
