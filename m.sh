@@ -6,4 +6,4 @@ fi
 target=$1
 shift
 args=$@
-make -s $target $M_ARGS_ENV_NAME="$args"
+exec make -s $target $M_ARGS_ENV_NAME="$args"
