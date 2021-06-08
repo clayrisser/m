@@ -1,6 +1,9 @@
+.PHONY: sudo
+	@sudo true
+
 .PHONY: install
-install:
-	@install m.sh /usr/local/bin/m
+install: sudo
+	@sudo install m.sh /usr/local/bin/m
 
 .PHONY: uninstall
 uninstall:
