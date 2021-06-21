@@ -3,7 +3,7 @@ export PARENT := true
 include blackmagic.mk
 
 CHROOT := sudo chroot .chroot
-DEBFILE := ly_0.1.0_amd64.deb
+DEBFILE := m_0.1.0_amd64.deb
 CODENAME := $(shell cat /etc/os-release | grep -E "^VERSION=" | \
 	sed 's|^.*(||g' | sed 's|)"$$||g')
 
@@ -28,11 +28,11 @@ changelog: .chglog.yml
 package: package-rpm package-deb
 
 .PHONY: package-rpm
-package-rpm: ly/bin/ly
+package-rpm:
 	@nfpm pkg --packager rpm --target .
 
 .PHONY: package-deb
-package-deb: ly/bin/ly
+package-deb:
 	@nfpm pkg --packager deb --target .
 
 .PHONY: sudo
@@ -51,7 +51,6 @@ chroot: sudo debootstrap
 
 .PHONY: clean
 clean:
-	-@$(MAKE) -s -C ly clean
 	-@sudo $(GIT) clean -fXd \
 		-e .chroot \
 		-e .chroot/ \
@@ -61,33 +60,41 @@ clean:
 
 .PHONY: purge
 purge: sudo clean
-	-@sudo umount .chroot/code/ly $(NOFAIL)
 	-@sudo rm -rf .chroot $(NOFAIL)
-	-@cd ly && sudo $(GIT) clean -fXd
 	-@sudo $(GIT) clean -fXd
 
 .PHONY: deps
 deps: sudo
 	@sudo apt install -y $(shell cat deps.list)
 
-.PHONY: submodules
-submodules: ly/makefile
-ly/makefile:
-	@git submodule sync
-	@git submodule update --init --remote
-	@git submodule update --init --recursive --remote
-
 %.deb: package-deb
 
 .PHONY: test
-test: sudo usr/bin/ly
-usr/bin/ly: $(DEBFILE) .chroot/bin/bash
+test: $(DEBFILE) .chroot/bin/bash
 	@cp $< .chroot/tmp
 	-@$(CHROOT) dpkg -i tmp/$<
 	@$(CHROOT) apt install -y -f
 	@$(CHROOT) dpkg -i tmp/$<
 	@[ "$$($(CHROOT) which m)" = "/usr/bin/local/m" ] || (echo TESTS FAILED >&2 && exit 1)
 	@echo TESTS PASSED
+
+.PHONY: install
+install: sudo
+	@sudo mkdir -p /usr/local/share/zsh/site-functions
+	@sudo cp _m.sh /usr/local/share/zsh/site-functions/_m
+	@sudo install m.sh /usr/local/bin/m
+	@echo uninstalled
+
+.PHONY: uninstall
+uninstall: sudo
+	@sudo rm -f \
+		/usr/local/share/zsh/site-functions/_m \
+		/usr/local/bin/m
+	@echo installed
+
+.PHONY: reinstall
+reinstall: uninstall install
+	@echo reinstalled
 
 -include $(patsubst %,$(_ACTIONS)/%,$(ACTIONS))
 
