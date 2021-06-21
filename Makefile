@@ -18,8 +18,11 @@ codename:
 	@echo $(CODENAME)
 
 .PHONY: changelog
-changelog:
-	@git-chglog --output CHANGELOG.md
+changelog: .chglog.yml
+	@chglog init
+
+.chglog.yml:
+	@chglog config
 
 .PHONY: package
 package: package-rpm package-deb

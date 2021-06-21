@@ -1,0 +1,76 @@
+- semver: 0.1.0
+  date: 2021-06-20T22:13:09-05:00
+  packager: Clay Risser <email@clayrisser.com>
+  changes:
+    - commit: 905eadce3a91f2d269cd8056e14f8447727c1ad8
+      note: Added nfpm
+      author:
+        name: Clay Risser
+        email: email@clayrisser.com
+      committer:
+        name: Clay Risser
+        email: email@clayrisser.com
+    - commit: 2fc19fadda6733c1989846b8e85cd4ec83c136d9
+      note: Added m completion
+      author:
+        name: Clay Risser
+        email: email@clayrisser.com
+      committer:
+        name: Clay Risser
+        email: email@clayrisser.com
+    - commit: 3cde4648a344211e8bdd7414cb4325993ae9b38c
+      note: Added sudo
+      author:
+        name: Clay Risser
+        email: email@clayrisser.com
+      committer:
+        name: Clay Risser
+        email: email@clayrisser.com
+    - commit: b889e9f85448828e1cb6a9f9aea2f7921d0224d9
+      note: Update README.md
+      author:
+        name: Clay Risser
+        email: jam@codejam.ninja
+      committer:
+        name: GitHub
+        email: noreply@github.com
+    - commit: 6b4b1ab6ae87ebd1cbe9da7883e8b9ed1c356a01
+      note: Exec make
+      author:
+        name: Jam Risser
+        email: jam@codejam.ninja
+      committer:
+        name: Jam Risser
+        email: jam@codejam.ninja
+    - commit: 061d29801c94db5e50fcc395fe57e4e84dd085b6
+      note: Updated m bugs
+      author:
+        name: Jam Risser
+        email: jam@codejam.ninja
+      committer:
+        name: Jam Risser
+        email: jam@codejam.ninja
+    - commit: df2da57e0c60934ced8465f4582d29c8f0eb8c6f
+      note: Added osx compatibility
+      author:
+        name: Jam Risser
+        email: jam@codejam.ninja
+      committer:
+        name: Jam Risser
+        email: jam@codejam.ninja
+    - commit: 47ab75b4dc608d5ab01334528ef3d61942746062
+      note: Update README.md
+      author:
+        name: Clay Risser
+        email: jam@codejam.ninja
+      committer:
+        name: GitHub
+        email: noreply@github.com
+    - commit: 4770b1d203028d427d51f6c299cd9b93212e2587
+      note: Initial commit
+      author:
+        name: Clay Risser
+        email: email@clayrisser.com
+      committer:
+        name: Clay Risser
+        email: email@clayrisser.com
