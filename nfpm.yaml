@@ -1,0 +1,27 @@
+name: m
+arch: amd64
+platform: linux
+version: v0.1.0
+section: default
+priority: extra
+replaces: []
+provides:
+  - m
+depends:
+  - make
+maintainer: 'Clay Risser <email@clayrisser.com>'
+description: |
+  lightweight wrapper around make
+vendor: nullgemm
+homepage: https://github.com/silicon-hills/m
+license: "MIT"
+changelog: changelog.yml
+contents:
+  - src: ./_m.sh
+    dst: /usr/local/share/zsh/site-functions/_m
+    file_info:
+      mode: 0644
+  - src: ./m.sh
+    dst: /usr/local/bin/m
+    file_info:
+      mode: 0755
