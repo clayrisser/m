@@ -4,7 +4,7 @@ include blackmagic.mk
 
 CHROOT := sudo chroot .chroot
 DEBFILE := m_0.1.0_amd64.deb
-CODENAME := $(shell cat /etc/os-release | grep -E "^VERSION=" | \
+CODENAME := $(shell cat /etc/os-release 2>/dev/null | grep -E "^VERSION=" | \
 	sed 's|^.*(||g' | sed 's|)"$$||g')
 
 ifeq ($(CODENAME),)
